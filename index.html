@@ -3,36 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo2.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
     <title>Document</title>
 </head>
 <body>
     <nav>
-        <img src="img/site_logo.jpg" alt="site_logo">
-        <ul class="nav_list">
-            <li>Destinos</li>
-            <a href="flights.html"><li>Vuelos</li></a>
+        <div class="nav_logo">
+            <a href="index.html">
+                <img src="img/logo2.png" alt="site_logo">
+            </a>
+        </div>
+        <ul id="desk_nav_list">
+            <a href="argentina.html">
+                <li>Argentina</li>
+            </a>
+            <a href="brasil.html">
+                <li>Brasil</li>
+            </a>
+            <a href="uruguay.html">
+                <li>Uruguay</li>
+            </a>
+            <a href="flights.html">
+                <li>Vuelos</li>
+            </a>
         </ul>
         <div class="nav_search_bar">
-            <input type="text" name="search" id="">
-            <img src="img/search_img.jpg" alt="search_img">
+            <input type="text" name="search" id="" placeholder="buscar...">
+            <img src="img/search_icon.svg" alt="search_img">
+        </div>
+        <div class="nav_hb_menu_dropdown" id="hb_menu" tabindex="3">
+            <img src="img/hamburger_menu.png" alt="hamburger_menu">
+            <ul id="nav_list">
+                <a href="argentina.html">
+                    <li>Argentina</li>
+                </a>
+                <a href="brasil.html">
+                    <li>Brasil</li>
+                </a>
+                <a href="uruguay.html">
+                    <li>Uruguay</li>
+                </a>
+                <a href="flights.html">
+                    <li>Vuelos</li>
+                </a>
+            </ul>
         </div>
     </nav>
-    <main>
-        <section>
 
+    <main class="index_main">
+        <span class="body_scrollbar"></span>
+        <section class="welcome">
+            <h1>Bienvenido a PlaceHolderName</h1>
+            <h3>Aca te podes enterar de los mejores lugares para visitar y encontrar el mejor precio para viajar</h3>
+            <input type="text" name="main_search" id="main_search" placeholder="Ingresa tu destino...">
         </section>
-        <section>
-
+    
+        <section class="hot_spots">
+            <h3 class="hot_spots_title">Conoce los lugares que todo el mundo esta visitando en este momento</h3>
+            <div class="hot_spot_item">
+                <div class="hot_spot_drop"></div>
+                <div class="hot_spot_item_bg_img" style="background-image: url('../img/argentina.jpg');">
+                    <a href="argentina.html">
+                        <h3 class="hot_spot_text">Argentina</h3>
+                    </a>
+                </div>
+            </div>
+            <div class="hot_spot_item">
+                <div class="hot_spot_drop"></div>
+                <div class="hot_spot_item_bg_img" style="background-image: url('../img/brasil.jpg');">
+                    <a href="brasil.html">
+                        <h3 class="hot_spot_text">Brasil</h3>
+                    </a>
+                </div>
+            </div>
+            <div class="hot_spot_item">
+                <div class="hot_spot_drop"></div>
+                <div class="hot_spot_item_bg_img" style="background-image: url('../img/uruguay.webp');">
+                    <a href="uruguay.html">
+                        <h3 class="hot_spot_text">Uruguay</h3>
+                    </a>
+                </div>
+            </div>
         </section>
     </main>
+
     <footer>
         <div class="social_links">
-            <a href="facebook"><img src="img/facebook_logo.png" alt="facebook"> Facebook</a>
-            <a href="twitter"><img src="img/twitter_logo.png" alt="twitter"> Twitter</a>
-            <a href="instagram"><img src="img/instagram_logo.png" alt="instagram"> Instagram</a>
+            <a href="facebook" target="_blank"><img src="img/facebook.png" alt="facebook"> Facebook</a>
+            <a href="twitter" target="_blank"><img src="img/gorjeo.png" alt="twitter"> Twitter</a>
+            <a href="instagram" target="_blank"><img src="img/instagram.png" alt="instagram"> Instagram</a>
         </div>
-        <a href="contact.html">Contacto</a>
+        <div class="contact">
+            <a href="contact.html">Contacto</a>
+        </div>
+        <div class="source_links">
+            <!-- source link to logo -->
+            <!-- <a href="https://www.flaticon.es/iconos-gratis/turismo" title="turismo iconos">Turismo iconos creados por Good Ware - Flaticon</a> -->
+            <a href="https://www.flaticon.es/iconos-gratis/boleto" title="boleto iconos">Boleto iconos creados por Eucalyp - Flaticon</a>
+            <a href="https://www.flaticon.es/iconos-gratis/facebook" title="facebook iconos">Facebook iconos creados por Freepik - Flaticon</a>
+            <a href="https://www.flaticon.es/iconos-gratis/gorjeo" title="gorjeo iconos">Gorjeo iconos creados por Roundicons - Flaticon</a>
+            <a href="https://www.flaticon.es/iconos-gratis/instagram" title="instagram iconos">Instagram iconos creados por Freepik - Flaticon</a>
+            <a href="https://www.flaticon.com/free-icons/hamburger" title="hamburger icons">Hamburger icons created by feen - Flaticon</a>
+        </div>
     </footer>
 </body>
 </html>
+
+<!-- 
+    TODO
+
+    make scrollbar transparent and more pretty and hide when not used
+
+    make searchbars work
+ -->
