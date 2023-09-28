@@ -1,7 +1,7 @@
 :root {
-    --bg-color: hsl(30, 60%, 50%);
+    --bg-color: hsl(30, 60%, 60%);
     --bg-dark-color: hsl(30, 60%, 40%);
-    --hbmenu-active-color: hsl(20, 70%, 50%);
+    --bg-highlight-color: hsl(25, 80%, 60%);
 }
 
 * {
@@ -14,9 +14,45 @@ body {
     width: 100vw;
 }
 
-a {
+nav a, footer a, aside a {
     text-decoration: none;
     color: black;
+}
+
+section ul {
+    padding: revert;
+    margin-block: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    padding-top: 1em;
+}
+
+h2 {
+    font-size: 1.5rem;
+    padding-top: 1em;
+}
+
+h3 {
+    padding-top: 1em;
+}
+
+hr {
+    border: none;
+    border-top: solid 3px black;
+    margin-block: 2rem;
+    position: relative;
+}
+
+hr::after {
+    content: "";
+    border: none;
+    border-top: solid 1px rgb(30, 30, 30);
+    margin: .5rem 15% 0px 15%;
+    height: .5rem;
+    width: 70%;
+    display: inline-block;
 }
 
 /* #region Navigation Bar */
@@ -29,7 +65,7 @@ nav {
     display: flex;
     justify-content: space-between;
     /* border-bottom: solid 1px black; */
-    z-index: 5;
+    z-index: 10;
     transition: top .5s;
 }
 
@@ -71,25 +107,28 @@ nav {
     background-color: var(--bg-dark-color);
     list-style-type: none;
     position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    padding: 0px;
     width: 200px;
     height: auto;
     max-height: 0px;
     max-width: 0px;
     top: 10vh;
     right: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     overflow: hidden;
     transition: max-width .5s, max-height .5s, background-color .5s;
     text-align: center;
-    z-index: 5;
+    z-index: 20;
 }
 
 #desk_nav_list {
     background-color: var(--bg-dark-color);
+    position: relative;
     list-style-type: none;
+    padding: 0px;
     display: none;
     flex-direction: row;
     justify-content: space-evenly;
@@ -120,18 +159,116 @@ nav {
     object-fit: fill;
 }
 
+#destinations_dropdown {
+    position: relative;
+}
+
+#destinations_dropdown_content {
+    background-color: var(--bg-dark-color);
+    list-style-type: none;
+    padding: 1em 0px;
+    position: absolute;
+    top: 10vh;
+    left: 0px;
+    display: none;
+    flex-direction: column;
+}
+
+#destinations_dropdown:hover + #destinations_dropdown_content {
+    display: flex;
+}
+
+#destinations_dropdown_content:hover {
+    display: flex;
+}
+/* #endregion */
+
 main {
     display: flex;
 }
 
 main > section {
+    background-color: var(--bg-color);
     width: 70%;
+    padding: .5em;
 }
 
-aside {
-    width: 30%;
-    background-color: lightgray;
+.content {
+    flex-grow: 1;
 }
+
+.content p{
+    text-align: justify;
+    margin-block: 1em;
+}
+
+.content img {
+    width: 100%;
+}
+
+#zone_map {
+    float: right;
+    width: 30vw;
+    margin: 5px;
+}
+
+#cordoba_city_specs {
+    border: solid 1px black;
+}
+
+#cordoba_city_specs th {
+    border-bottom: solid 3px black;
+}
+
+#cordoba_city_specs td {
+    border-bottom: solid 1px black;
+}
+
+.mobile_google_map {
+    width: 100%;
+}
+
+/* #region Aside */
+aside {
+    background-color: var(--bg-color);
+    position: fixed;
+    padding: .5em;
+    width: 80vw;
+    height: 100vh;
+    left: -80vw;
+    top: 10vh;
+    border-right: solid 1px black;
+    transition: left .3s;
+    z-index: 5;
+}
+
+aside ul {
+    list-style-type: none;
+    padding: 0px;
+    padding-left: 1em;
+}
+
+aside li {
+    margin-block: 1em;
+}
+
+aside a {
+    width: 100%;
+}
+
+.aside_expand {
+    background-color: var(--bg-dark-color);
+    position: fixed;
+    padding: 2px;
+    left: 0px;
+    bottom: 0px;
+    transition: left .3s;
+}
+
+.aside_expand img {
+    width: 15vw;
+}
+/* #endregion */
 
 /* #region Footer */
 footer {
@@ -180,6 +317,10 @@ footer img {
 ::-webkit-scrollbar {
     width: 0px;
 }
+
+/* ::-webkit-scrollbar-thumb {
+    background-color: hsl(100, 0%, 20%);
+} */
 
 /* PSEUDO SCROLLBAR --------- TODO
 .body_scrollbar {
@@ -244,39 +385,38 @@ footer img {
     z-index: 4;
 }
 
-.hot_spot_drop {
-    position: absolute;
-    background-color: black;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    z-index: -2;
-    transition: box-shadow .3s, right 1s, top 1s;
-}
-
-.hot_spot_item_bg_img {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-x: center;
-}
-
 .hot_spot_item:hover {
     transform: scale(1.2);
     z-index: 0;
     box-shadow: 0 0 10px cyan;
 }
 
-.hot_spot_item:hover .hot_spot_drop {
-    right: -10px;
-    top: 10px;
-    box-shadow: 0 0 10px cyan;
-}
-
 .hot_spot_text {
     color: orange;
-    text-decoration: solid;
     padding: 4rem 0px;
     background-color: rgba(30, 30, 30, .5);
+}
+
+.hot_spot_drop {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: right .3s, border .3s;
+    z-index: -5;
+}
+
+.hot_spot_item_bg_img {
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.hot_spot_item:hover .hot_spot_drop{
+    right: -10px;
+    box-shadow: 0 0 10px cyan;
 }
 /* #endregion */
 
@@ -301,6 +441,14 @@ footer img {
         border-bottom: none;
         border-right: solid 1px black;
     }
+
+    aside {
+        top: 20vh;
+    }
+
+    .aside_expand img {
+        width: 5vw;
+    }
 }
 
 @media only screen and (min-width: 426px) {
@@ -320,6 +468,36 @@ footer img {
         width: 100%;
         height: 100%;
         margin: 0px;
+    }
+
+    aside {
+        position: sticky;
+        width: 20vw;
+        left: 0px;
+    }
+
+    .aside_expand {
+        display: none;
+    }
+
+    #zone_map {
+        width: 20%;
+    }
+
+    .content {
+        padding-inline: 20%;
+    }
+
+    .content img {
+        width: 100%;
+    }
+
+    .img_group img {
+        width: 49%;
+    }
+
+    iframe {
+        height: 300px;
     }
 }
 
@@ -347,6 +525,6 @@ footer img {
     }
 
     #desk_nav_list a:hover {
-        background-color: var(--hbmenu-active-color);
+        background-color: var(--bg-highlight-color);
     }
 }
