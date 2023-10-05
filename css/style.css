@@ -481,10 +481,6 @@ footer img {
     display: none;
 }
 
-#we_dont {
-    display: none;
-}
-
 @media only screen and (max-height: 320px) {
     nav {
         height: 20vh;
@@ -596,6 +592,13 @@ footer img {
     }
 
     /* #region Fooling around */
+    #showcase_display {
+        display: block;
+        margin-left: -16.74%;
+        margin-top: -1.18%;
+        width: 80vw;
+    }
+
     #showcase {
         position: relative;
         height: 40vh;
@@ -608,8 +611,9 @@ footer img {
     }
 
     .showcase_container {
-        background-size: cover;
-        background-position-y: 50%;
+        background-size: 100%;
+        background-position: 0 50%;
+        box-shadow: 0;
         position: absolute;
         left: 0px;
         width: 100%;
@@ -617,37 +621,87 @@ footer img {
         padding: 2em;
         overflow: hidden;
         z-index: 5;
-        transition: clip-path .5s, z-index .6s;
+        transition: clip-path .5s, z-index .6s, background-position .5s, background-size .5s, background-color .5s, box-shadow .5s;
         transition-timing-function: ease-out;
     }
 
     .showcase_container * {
-        display: none;
-        padding-right: 200%;
-        transition: display .5s, padding .5s;
+        display: hidden;
+    }
+
+    .showcase_container_title {
+        text-align: end;
+        text-shadow: 2px 2px 0 whitesmoke;
+        text-decoration: underline, solid;
+        font-style: italic;
+        position: relative;
+        left: -200%;
+        transition: left .3s ease-in;
+    }
+
+    .showcase_container_text {
+        color: white;
+        text-shadow: 1px 1px 0 black;
+        font-style: italic;
+        position: relative;
+        left: -200%;
+        transition: left 1s cubic-bezier(.86,.08,.71,1);
+    }
+
+    #showcase_adder_container {
+        position: absolute;
+        right: 0;
+        bottom: -32px;
     }
 
     .showcase_container:hover {
+        background-color: rgba(30, 30, 30, .3);
+        background-size: 110%;
+        background-position: 20% 50%;
+        box-shadow: inset 0 0 100px rgba(30, 30, 30, 1);
         z-index: 10;
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
-        transition: clip-path .5s, z-index .01s;
+        transition: clip-path .5s, z-index .01s, background-size .5s, background-color .5s;
     }
 
     .showcase_container:hover * {
         display: block;
-        padding-right: 0;
     }
 
-    #showcase_display {
-        display: block;
-        position: absolute;
-        left: 20vw;
-        width: 80vw;
-        float: top;
+    .showcase_container:hover .showcase_container_title, .showcase_container:hover .showcase_container_text {
+        left: 0px;
     }
 
-    #we_dont {
-        display: block;
+    /* .adder {
+        background-color: darkgreen;
+        color: white;
+        font-size: 16px;
+        text-align: center;
+        width: 30px;
+        padding: .2em;
+        border: 3px solid darkgreen;
+        transition: background-color .5s, color .5s;
     }
+
+    .adder:hover {
+        background-color: white;
+        color: black;
+    }
+
+    .remover {
+        background-color: darkred;
+        color: white;
+        font-size: 16px;
+        text-align: center;
+        width: 30px;
+        padding: .2em;
+        border: 3px solid darkred;
+        transition: background-color .5s, color .5s;
+    }
+
+    .remover:hover {
+        background-color: white;
+        color: black;
+    } */
     /* #endregion */
 }

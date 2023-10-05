@@ -98,16 +98,15 @@ window.addEventListener('DOMContentLoaded', () => {
             container.style.clipPath = `polygon(${slicesTop[i - 2]}% 0, ${slicesTop[i - 1]}% 0, ${slicesBottom[i - 1]}% 100%, ${slicesBottom[i - 2]}% 100%)`;
         }
     }
+
+    // To Be Done with servers
+    // function addShowcaseContainer() {
+
+    // }
+
+    // function removeShowcaseContainer() {
+
+    // }
     // #endregion
-
-    /*
-    top left: 0 0
-    top right: 100 0
-    bottom right: 100 100
-    bottom left: 0 100
-
-    first:
-    top right: (100 / count) 0
-    */
 });
 
