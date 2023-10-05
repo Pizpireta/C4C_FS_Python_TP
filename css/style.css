@@ -2,6 +2,10 @@
     --bg-color: hsl(30, 60%, 60%);
     --bg-dark-color: hsl(30, 60%, 40%);
     --bg-highlight-color: hsl(25, 80%, 60%);
+    --navitem-bg-hover-color: hsl(100, 0%, 20%);
+    --navitem-text-hover-color: white;
+    --warning-color: hsl(350, 80%, 45%);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 * {
@@ -26,16 +30,16 @@ section ul {
 
 h1 {
     font-size: 2rem;
-    padding-top: 1em;
+    padding-block: 1em;
 }
 
 h2 {
     font-size: 1.5rem;
-    padding-top: 1em;
+    padding-block: 1em;
 }
 
 h3 {
-    padding-top: 1em;
+    padding-block: 1em;
 }
 
 hr {
@@ -64,8 +68,7 @@ nav {
     top: 0px;
     display: flex;
     justify-content: space-between;
-    /* border-bottom: solid 1px black; */
-    z-index: 10;
+    z-index: 9999;
     transition: top .5s;
 }
 
@@ -136,6 +139,11 @@ nav {
     text-align: center;
 }
 
+#desk_nav_list a:hover {
+    background-color: var(--navitem-bg-hover-color);
+    color: var(--navitem-text-hover-color);
+}
+
 #nav_list a {
     width: 100%;
     height: 5rem;
@@ -184,17 +192,23 @@ nav {
 /* #endregion */
 
 main {
+    background-color: var(--bg-color);
     display: flex;
 }
 
 main > section {
-    background-color: var(--bg-color);
     width: 70%;
-    padding: .5em;
+}
+
+.references_main {
+    display: block;
+    width: 100%;
+    padding: 3rem 3rem 3rem 1rem;
 }
 
 .content {
     flex-grow: 1;
+    padding: .5rem;
 }
 
 .content p{
@@ -212,20 +226,51 @@ main > section {
     margin: 5px;
 }
 
-#cordoba_city_specs {
+.specs_table {
     border: solid 1px black;
+    margin-block: 1rem;
 }
 
-#cordoba_city_specs th {
+.specs_table th {
     border-bottom: solid 3px black;
 }
 
-#cordoba_city_specs td {
+.specs_table td {
     border-bottom: solid 1px black;
 }
 
 .mobile_google_map {
     width: 100%;
+}
+
+.summary {
+    font-style: italic;
+    padding-inline: 1em;
+    border-bottom: solid 2px hsla(230, 0%, 50%, 1);
+}
+
+#sidemaps {
+    background-color: var(--bg-dark-color);
+    display: none;
+    position: fixed;
+    right: -40vw;
+    bottom: 0px;
+    padding: .5rem;
+    width: 40vw;
+    transition: right .3s;
+}
+
+#sidemaps_expand {
+    background-color: var(--bg-dark-color);
+    position: absolute;
+    width: 60px;
+    padding: .2rem;
+    left: -60px;
+    bottom: 0px;
+}
+
+#sidemaps_expand i {
+    font-size: 50px;
 }
 
 /* #region Aside */
@@ -234,10 +279,11 @@ aside {
     position: fixed;
     padding: .5em;
     width: 80vw;
-    height: 100vh;
+    height: 90vh;
     left: -80vw;
     top: 10vh;
     border-right: solid 1px black;
+    overflow: scroll;
     transition: left .3s;
     z-index: 5;
 }
@@ -256,6 +302,10 @@ aside a {
     width: 100%;
 }
 
+aside a:hover {
+    text-decoration: underline;
+}
+
 .aside_expand {
     background-color: var(--bg-dark-color);
     position: fixed;
@@ -265,8 +315,8 @@ aside a {
     transition: left .3s;
 }
 
-.aside_expand img {
-    width: 15vw;
+.aside_expand i {
+    font-size: 9vw;
 }
 /* #endregion */
 
@@ -422,6 +472,19 @@ footer img {
 
 /* #endregion */
 
+.warning {
+    color: var(--warning-color);
+    /* text-shadow: 0 0 2px black; */
+}
+
+#showcase_display {
+    display: none;
+}
+
+#we_dont {
+    display: none;
+}
+
 @media only screen and (max-height: 320px) {
     nav {
         height: 20vh;
@@ -470,22 +533,12 @@ footer img {
         margin: 0px;
     }
 
-    aside {
-        position: sticky;
-        width: 20vw;
-        left: 0px;
-    }
-
-    .aside_expand {
-        display: none;
-    }
-
     #zone_map {
         width: 20%;
     }
 
     .content {
-        padding-inline: 20%;
+        padding-inline: 10%;
     }
 
     .content img {
@@ -524,7 +577,77 @@ footer img {
         width: 7rem;
     }
 
-    #desk_nav_list a:hover {
-        background-color: var(--bg-highlight-color);
+    aside {
+        position: sticky;
+        width: 20vw;
+        left: 0px;
     }
+
+    .aside_expand {
+        display: none;
+    }
+
+    #mobile_maps {
+        display: none;
+    }
+
+    #sidemaps {
+        display: block;
+    }
+
+    /* #region Fooling around */
+    #showcase {
+        position: relative;
+        height: 40vh;
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: stretch;
+    }
+
+    .showcase_container {
+        background-size: cover;
+        background-position-y: 50%;
+        position: absolute;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        padding: 2em;
+        overflow: hidden;
+        z-index: 5;
+        transition: clip-path .5s, z-index .6s;
+        transition-timing-function: ease-out;
+    }
+
+    .showcase_container * {
+        display: none;
+        padding-right: 200%;
+        transition: display .5s, padding .5s;
+    }
+
+    .showcase_container:hover {
+        z-index: 10;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
+        transition: clip-path .5s, z-index .01s;
+    }
+
+    .showcase_container:hover * {
+        display: block;
+        padding-right: 0;
+    }
+
+    #showcase_display {
+        display: block;
+        position: absolute;
+        left: 20vw;
+        width: 80vw;
+        float: top;
+    }
+
+    #we_dont {
+        display: block;
+    }
+    /* #endregion */
 }
